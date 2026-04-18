@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d782033b1f4261643bfbcccda3798dc4, type: 3}
+  m_Name: FormulaLadder
+  m_EditorClassIdentifier: 
+  objectName1: Tape
+  objectName2: Wood
+  objectName3: Rope
+  nameTransform1: pos 1
+  nameTransform2: pos 2
+  nameTransform3: pos 3
+  resultGameObject: {fileID: 2529179467528002366, guid: cee1e3acaa12bf14fa6db424d36610cd, type: 3}

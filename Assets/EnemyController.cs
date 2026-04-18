@@ -1,0 +1,112 @@
+using UnityEngine;
+
+public class EnemyController : MonoBehaviour
+{
+    [SerializeField] private Transform player;
+    private LineOfSight los;
+    private EnemyTree desicionTree;
+    private EnemyContext context;
+
+    [SerializeField] private float speed = 3;
+    [SerializeField] private float rotationSpeed = 33;
+    [SerializeField] private float patrolRotationSpeed = 33;
+
+    //[SerializeField] private Material attackMaterial;
+    private Material defaultMaterial;
+    private MeshRenderer renderer;
+
+    private Rigidbody playerRB;
+    private Vector3 wanderDirection;
+    private float wanderTime;
+    [SerializeField] private float WanderchangeInterval = 1.5f;
+    private Vector3 dir;
+
+    private void Awake()
+    {
+        los = GetComponent<LineOfSight>();
+        desicionTree = GetComponent<EnemyTree>();
+        context = new EnemyContext { self = transform, player = player, los = los };
+
+        dir = Vector3.zero;
+        //renderer = GetComponent<MeshRenderer>();
+
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("player").transform;
+
+        //renderer = GetComponent<MeshRenderer>();
+        //defaultMaterial = GetComponent<MeshRenderer>().material;
+    }
+
+    public void Update()
+    {
+        context.player = player;
+        desicionTree.Evaluate(this, context);
+        Move(dir);
+    }
+    public void Pursuit()
+    {
+        Vector3 direction = player.transform.position - transform.position;
+        direction.y = 0;
+        Vector3 moveDirection = direction.normalized;
+
+        transform.position += moveDirection * speed * Time.deltaTime;
+
+        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
+    }
+
+    public void Patrol()
+    {
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+
+        renderer.material = defaultMaterial;
+    }
+
+    public void Attack()
+    {
+        Debug.Log("Empieza a atacar");
+        //renderer.material = attackMaterial;
+        Debug.Log("Deja de atacar");
+    }
+    //public void Wander()
+    //{
+    //    //wanderTime -= Time.deltaTime;
+    //    //if (wanderTime <= 0f)
+    //    //{
+    //    //    wanderDirection = SteeringBehaviours.Wander(wanderDirection, 180f);
+    //    //    wanderTime = WanderchangeInterval;
+    //    //}
+    //    //dir = wanderDirection;
+    //}
+    public void Wander()
+    {
+        wanderTime -= Time.deltaTime;
+        if (wanderTime <= 0f)
+        {
+            wanderDirection = SteeringBehaviours.Wander(wanderDirection, 180f);
+            wanderTime = WanderchangeInterval;
+        }
+        dir = wanderDirection;
+
+        Debug.Log("vAYA");
+    }
+    public void Seek()
+    {
+        dir = SteeringBehaviours.Seek(transform, player.transform.position);
+
+        Debug.Log("vAYA123");
+    }
+
+    private void Move(Vector3 dir)
+    {
+        transform.position += dir * speed * Time.deltaTime;
+
+        if (dir != Vector3.zero)
+        {
+            transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotationSpeed);
+        }
+    }
+
+}
