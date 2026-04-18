@@ -12,11 +12,12 @@ TagManager:
   - Ladder
   - UnlockedDoor
   - Piston
+  - wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
   - 

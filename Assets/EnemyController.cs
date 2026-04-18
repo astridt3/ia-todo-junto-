@@ -25,9 +25,10 @@ public class EnemyController : MonoBehaviour
     {
         los = GetComponent<LineOfSight>();
         desicionTree = GetComponent<EnemyTree>();
+        wanderDirection = transform.forward;
         context = new EnemyContext { self = transform, player = player, los = los };
 
-        dir = Vector3.zero;
+        //dir = Vector3.zero;
         //renderer = GetComponent<MeshRenderer>();
 
     }
