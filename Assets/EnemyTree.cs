@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyTree : MonoBehaviour
@@ -12,10 +13,17 @@ public class EnemyTree : MonoBehaviour
         ActionNode PursuitNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursuit());
         ActionNode WanderNode = new ActionNode(EnemyModel3 => EnemyModel3.Wander());
         ActionNode SeekNode = new ActionNode(EnemyModel3 => EnemyModel3.Seek());
-        rootNode = new QuestionNode(context => context.los.IsRange(context.self, context.player)
-        && context.los.IsAngle(context.self, context.player) &&
-        context.los.IsObstacle(context.self, context.player),
-        SeekNode, WanderNode);
+        ActionNode AttackNode = new ActionNode(EnemyController => EnemyController.Attack());
+        rootNode = new QuestionNode(
+     context => context.los.IsRangeAttack(context.self, context.player),
+     AttackNode,
+     new QuestionNode(
+         context => context.los.IsRange(context.self, context.player)
+         && context.los.IsObstacle(context.self, context.player),
+         SeekNode,
+         WanderNode
+     )
+ );
 
     }
 

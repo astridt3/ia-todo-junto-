@@ -68,6 +68,7 @@ public class EnemyController : MonoBehaviour
     public void Attack()
     {
         Debug.Log("Empieza a atacar");
+        dir = Vector3.zero;
         //renderer.material = attackMaterial;
         Debug.Log("Deja de atacar");
     }
