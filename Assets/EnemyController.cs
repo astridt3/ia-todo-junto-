@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private float wanderTime;
     [SerializeField] private float WanderchangeInterval = 1.5f;
     private Vector3 dir;
+    private bool isAttacking = false;
+
 
     private void Awake()
     {
@@ -64,13 +67,18 @@ public class EnemyController : MonoBehaviour
 
         renderer.material = defaultMaterial;
     }
-
+    
     public void Attack()
     {
         Debug.Log("Empieza a atacar");
-        dir = Vector3.zero;
-        //renderer.material = attackMaterial;
-        Debug.Log("Deja de atacar");
+        isAttacking = true;
+        if (isAttacking)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            dir = Vector3.zero;
+        }
+            //renderer.material = attackMaterial;
+            Debug.Log("Deja de atacar");
     }
     //public void Wander()
     //{
