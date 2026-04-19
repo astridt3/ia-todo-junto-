@@ -80,16 +80,6 @@ public class EnemyController : MonoBehaviour
             //renderer.material = attackMaterial;
             Debug.Log("Deja de atacar");
     }
-    //public void Wander()
-    //{
-    //    //wanderTime -= Time.deltaTime;
-    //    //if (wanderTime <= 0f)
-    //    //{
-    //    //    wanderDirection = SteeringBehaviours.Wander(wanderDirection, 180f);
-    //    //    wanderTime = WanderchangeInterval;
-    //    //}
-    //    //dir = wanderDirection;
-    //}
     public void Wander()
     {
         wanderTime -= Time.deltaTime;

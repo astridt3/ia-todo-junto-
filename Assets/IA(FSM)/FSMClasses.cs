@@ -1,0 +1,177 @@
+using UnityEngine;
+
+public class FSMClasses : MonoBehaviour
+{
+    State currentState { get; set; }
+
+    private PatrolState patrolState;
+    private PursuitState pursuitState;
+    private AttackState attackState;
+    public EnemyControllerFSM enemy;
+    private FreezeState freezeState;
+    public State _currentState { get { return currentState; } set { currentState = value; } }
+
+    private void Awake()
+    {
+        enemy = GetComponent<EnemyControllerFSM>();
+        freezeState = new FreezeState(this);
+        patrolState = new PatrolState(this);
+        pursuitState = new PursuitState(this);
+        attackState = new AttackState(this);
+
+        currentState = patrolState;
+    }
+    public void ChangeToFreeze()
+    {
+        ChangeState(freezeState);
+    }
+    public void ChangeToPatrol()
+    {
+        ChangeState(patrolState);
+    }
+
+    public void ChangeToPursuit()
+    {
+        ChangeState(pursuitState);
+    }
+
+    public void ChangeToAttack()
+    {
+        ChangeState(attackState);
+    }
+
+    public void ChangeState(State newState)
+    {
+        if (currentState == newState)
+        {
+            return;
+        }
+
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
+    }
+
+    public void UpdateState(bool canSeePlayer)
+    {
+        currentState.Update(canSeePlayer);
+    }
+
+    public void ToPatrol() => ChangeState(patrolState);
+    public void ToPursuit() => ChangeState(pursuitState);
+    public void ToAttack() => ChangeState(attackState);
+    public void ToFreeze() => ChangeState(freezeState);
+}
+
+public abstract class State
+{
+    protected FSMClasses fsm;
+    public State(FSMClasses fsm)
+    {
+        this.fsm = fsm;
+    }
+
+    public virtual void Enter() { }
+
+    public virtual void Exit() { }
+
+    public abstract void Update(bool canSeePlayer);
+}
+
+public class PatrolState : State
+{
+    public PatrolState(FSMClasses fsm) : base(fsm) { }
+
+    public override void Update(bool canSeePlayer)
+    {
+        fsm.enemy.Wander();
+
+        if (canSeePlayer)
+        {
+            fsm.ToPursuit();
+        }
+    }
+}
+
+public class PursuitState : State
+{
+    public PursuitState(FSMClasses fsm) : base(fsm) { }
+
+    public override void Update(bool canSeePlayer)
+    {
+        fsm.enemy.Seek();
+
+        float distance = Vector3.Distance(
+            fsm.enemy.transform.position,
+            fsm.enemy.player.position
+        );
+
+        if (!canSeePlayer)
+        {
+            fsm.ToPatrol();
+        }
+        if (!canSeePlayer)
+        {
+            fsm.ToPatrol();
+        }
+        else if (distance < 2f)
+        {
+            fsm.ToAttack();
+        }
+        else if (distance < 4f)
+        {
+            fsm.ToFreeze();
+        }
+    }
+}
+public class FreezeState : State
+{
+    private float freezeTime = 1f;
+    private float timer;
+
+    public FreezeState(FSMClasses fsm) : base(fsm) { }
+
+    public override void Enter()
+    {
+        timer = freezeTime;
+        fsm.enemy.FreezePlayer(freezeTime);
+    }
+
+    public override void Update(bool canSeePlayer)
+    {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0f)
+        {
+            fsm.ToPursuit();
+        }
+    }
+}
+
+public class AttackState : State
+{
+    public AttackState(FSMClasses fsm) : base(fsm) { }
+
+    public override void Enter()
+    {
+        fsm.enemy.Attack();
+    }
+
+    public override void Exit()
+    {
+        fsm.enemy.StopAttack();
+    }
+
+    public override void Update(bool canSeePlayer)
+    {
+        float distance = Vector3.Distance(
+            fsm.enemy.transform.position,
+            fsm.enemy.player.position
+        );
+
+        if (distance > 2f)
+        {
+            fsm.ToPursuit();
+        }
+    }
+}
