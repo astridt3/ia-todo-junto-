@@ -11,8 +11,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed = 3;
     [SerializeField] private float rotationSpeed = 33;
     [SerializeField] private float patrolRotationSpeed = 33;
-
-    //[SerializeField] private Material attackMaterial;
     private Material defaultMaterial;
     private MeshRenderer renderer;
 

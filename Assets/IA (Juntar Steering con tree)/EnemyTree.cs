@@ -19,7 +19,7 @@ public class EnemyTree : MonoBehaviour
      AttackNode,
      new QuestionNode(
          context => context.los.IsRange(context.self, context.player)
-         && context.los.IsObstacle(context.self, context.player),
+         && !context.los.IsObstacle(context.self, context.player),
          SeekNode,
          WanderNode
      )

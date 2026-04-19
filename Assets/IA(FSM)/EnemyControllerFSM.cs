@@ -34,7 +34,7 @@ public class EnemyControllerFSM : MonoBehaviour
 
     public void Update()
     {
-        bool canSeePlayer = los.IsRange(transform, player) && los.IsObstacle(transform, player);
+        bool canSeePlayer = los.IsRange(transform, player) && !los.IsObstacle(transform, player);
         Debug.Log(canSeePlayer);
         fsm.UpdateState(canSeePlayer);
 
