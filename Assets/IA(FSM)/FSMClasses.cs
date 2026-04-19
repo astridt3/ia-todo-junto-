@@ -37,11 +37,6 @@ public class FSMClasses : MonoBehaviour
         ChangeState(pursuitState);
     }
 
-    //public void ChangeToAttack()
-    //{
-    //    ChangeState(attackState);
-    //}
-
     public void ChangeState(State newState)
     {
         if (currentState == newState)
@@ -117,14 +112,6 @@ public class PursuitState : State
         {
             fsm.ToPatrol();
         }
-        if (!canSeePlayer)
-        {
-            fsm.ToPatrol();
-        }
-        //else if (distance < 2f)
-        //{
-        //    fsm.ToAttack();
-        //}
         else if (distance <= 4f)
         {
             fsm.ToFreeze();
@@ -133,7 +120,7 @@ public class PursuitState : State
 }
 public class FreezeState : State
 {
-    private float freezeTime = 1f;
+    private float freezeTime = 2f;
     private float timer;
 
     public FreezeState(FSMClasses fsm) : base(fsm) { }
@@ -141,6 +128,11 @@ public class FreezeState : State
     public override void Enter()
     {
         timer = freezeTime;
+
+        //// frena enemigo
+        //fsm.enemy.SetDirection(Vector3.zero);
+
+        // freeza player
         fsm.enemy.FreezePlayer(freezeTime);
     }
 
@@ -185,30 +177,3 @@ public class SearchState : State
     }
 }
 
-//public class AttackState : State
-//{
-//    public AttackState(FSMClasses fsm) : base(fsm) { }
-
-//    public override void Enter()
-//    {
-//        fsm.enemy.Attack();
-//    }
-
-//    public override void Exit()
-//    {
-//        fsm.enemy.StopAttack();
-//    }
-
-//    public override void Update(bool canSeePlayer)
-//    {
-//        float distance = Vector3.Distance(
-//            fsm.enemy.transform.position,
-//            fsm.enemy.player.position
-//        );
-
-//        if (distance > 2f)
-//        {
-//            fsm.ToPursuit();
-//        }
-//    }
-//}

@@ -32,21 +32,12 @@ public class EnemyControllerFSM : MonoBehaviour
     {
         fsm = GetComponent<FSMClasses>();
         los = GetComponent<LineOfSight>();
-        //desicionTree = GetComponent<EnemyTree>();
         wanderDirection = transform.forward;
-        //c/ontext = new EnemyContext { self = transform, player = player, los = los };/
-
-        //dir = Vector3.zero;
-        //renderer = GetComponent<MeshRenderer>();
-
     }
 
     private void Start()
     {
         player = GameObject.Find("player").transform;
-
-        //renderer = GetComponent<MeshRenderer>();
-        //defaultMaterial = GetComponent<MeshRenderer>().material;
     }
 
     public void Update()
@@ -57,10 +48,6 @@ public class EnemyControllerFSM : MonoBehaviour
 
         Move(dir);
     }
-    //public void StopAttack()
-    //{
-    //    isAttacking = false;
-    //}
     public void Pursuit()
     {
         Vector3 direction = player.transform.position - transform.position;
@@ -81,25 +68,22 @@ public class EnemyControllerFSM : MonoBehaviour
             rb.isKinematic = freeze;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            fsm.ToFreeze();
+        }
+    }
+    public void SetDirection(Vector3 newDir)
+    {
+        dir = newDir;
+    }
 
     public void Patrol()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-
-        //renderer.material = defaultMaterial;
     }
-    //public void Attack()
-    //{
-    //    Debug.Log("Empieza a atacar");
-    //    isAttacking = true;
-    //    if (isAttacking)
-    //    {
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //        dir = Vector3.zero;
-    //    }
-    //    //renderer.material = attackMaterial;
-    //    Debug.Log("Deja de atacar");
-    //}
     public void Wander()
     {
         wanderTime -= Time.deltaTime;
