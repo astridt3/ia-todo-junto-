@@ -4,14 +4,9 @@ public class LineOfSight : MonoBehaviour
 {
     [SerializeField] private int distance = 33;
     [SerializeField] private float angle = 90;
-
     [SerializeField] private LayerMask obs;
-
     private GameObject player;
     private MeshRenderer playerRenderer;
-
-    //[SerializeField] private Material noSee;
-    //[SerializeField] private Material seen;
 
     [SerializeField] private float distanceForAttack;
     private void Start()
@@ -19,20 +14,6 @@ public class LineOfSight : MonoBehaviour
         player = GameObject.Find("player");
         playerRenderer = player.GetComponent<MeshRenderer>();
     }
-
-    //private void Update()
-    //{
-    //    if (IsRange(transform, player.transform) == true && 
-    //        IsAngle (transform, player.transform) == true && 
-    //        IsObstacle (transform, player.transform) == true) 
-    //    {
-    //        playerRenderer.material = seen;
-    //    }
-    //    else 
-    //    {
-    //        playerRenderer.material = noSee;
-    //    }
-    //}
 
     public bool IsRange(Transform self, Transform target)
     {
