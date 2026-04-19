@@ -148,7 +148,7 @@ public class FreezeState : State
 }
 public class SearchState : State
 {
-    private float searchTime = 10f;
+    private float searchTime = 15f;
     private float timer;
 
     public SearchState(FSMClasses fsm) : base(fsm) { }
