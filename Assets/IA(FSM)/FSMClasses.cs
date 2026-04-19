@@ -6,7 +6,6 @@ public class FSMClasses : MonoBehaviour
 
     private PatrolState patrolState;
     private PursuitState pursuitState;
-    //private AttackState attackState;
     public EnemyControllerFSM enemy;
     private FreezeState freezeState;
     private SearchState searchState;
@@ -18,7 +17,6 @@ public class FSMClasses : MonoBehaviour
         freezeState = new FreezeState(this);
         patrolState = new PatrolState(this);
         pursuitState = new PursuitState(this);
-        //attackState = new AttackState(this);
         searchState = new SearchState(this);
 
         currentState = patrolState;
@@ -58,10 +56,8 @@ public class FSMClasses : MonoBehaviour
         ChangeState(searchState);
     }
     public void ToSearch() => ChangeState(searchState);
-
     public void ToPatrol() => ChangeState(patrolState);
     public void ToPursuit() => ChangeState(pursuitState);
-    //public void ToAttack() => ChangeState(attackState);
     public void ToFreeze() => ChangeState(freezeState);
 }
 
@@ -128,11 +124,6 @@ public class FreezeState : State
     public override void Enter()
     {
         timer = freezeTime;
-
-        //// frena enemigo
-        //fsm.enemy.SetDirection(Vector3.zero);
-
-        // freeza player
         fsm.enemy.FreezePlayer(freezeTime);
     }
 

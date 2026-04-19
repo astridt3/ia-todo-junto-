@@ -7,23 +7,14 @@ public class EnemyControllerFSM : MonoBehaviour
 {
     public Transform player;
     private LineOfSight los;
-    //private EnemyTree desicionTree;
-    //private EnemyContext context;
-
     [SerializeField] private float speed = 3;
     [SerializeField] private float rotationSpeed = 33;
     [SerializeField] private float patrolRotationSpeed = 33;
-
-    //[SerializeField] private Material attackMaterial;
-    //private Material defaultMaterial;
-    //private MeshRenderer renderer;
-
     private Rigidbody playerRB;
     private Vector3 wanderDirection;
     private float wanderTime;
     [SerializeField] private float WanderchangeInterval = 1.5f;
     private Vector3 dir;
-    private bool isAttacking = false;
     private FSMClasses fsm;
     private Coroutine freezeRoutine;
 
