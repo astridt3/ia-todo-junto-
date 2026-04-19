@@ -17,7 +17,8 @@ public class EnemyControllerFSM : MonoBehaviour
     private Vector3 dir;
     private FSMClasses fsm;
     private Coroutine freezeRoutine;
-
+    [SerializeField] private float freezeCooldown = 5f;
+    private bool canFreeze = true;
 
     private void Awake()
     {
@@ -61,10 +62,19 @@ public class EnemyControllerFSM : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canFreeze)
         {
             fsm.ToFreeze();
+            StartCoroutine(FreezeCooldownRoutine());
         }
+    }
+    private IEnumerator FreezeCooldownRoutine()
+    {
+        canFreeze = false;
+
+        yield return new WaitForSeconds(freezeCooldown);
+
+        canFreeze = true;
     }
     public void SetDirection(Vector3 newDir)
     {

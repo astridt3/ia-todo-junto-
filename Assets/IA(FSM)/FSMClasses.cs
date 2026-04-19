@@ -139,22 +139,22 @@ public class FreezeState : State
 }
 public class SearchState : State
 {
-    private float searchTime = 15f;
+    private float totalSearchTime = 15f;
+    private float ignorePlayerTime = 7f;
     private float timer;
-
     public SearchState(FSMClasses fsm) : base(fsm) { }
-
     public override void Enter()
     {
-        timer = searchTime;
+        timer = totalSearchTime;
     }
-
     public override void Update(bool canSeePlayer)
     {
-        fsm.enemy.Wander();
-
         timer -= Time.deltaTime;
-
+        if (timer > totalSearchTime - ignorePlayerTime)
+        {
+            fsm.enemy.Wander();
+            return;
+        }
         if (canSeePlayer)
         {
             fsm.ToPursuit();
@@ -164,7 +164,9 @@ public class SearchState : State
         if (timer <= 0f)
         {
             fsm.ToPatrol();
+            return;
         }
+        fsm.enemy.Wander();
     }
 }
 
