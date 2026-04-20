@@ -40,7 +40,7 @@ public class EnemyControllerFSM : MonoBehaviour
 
         Move(dir);
     }
-    public void Pursuit()
+    public void Pursue()
     {
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;

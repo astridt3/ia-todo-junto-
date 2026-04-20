@@ -25,7 +25,7 @@ public class enemyModel : MonoBehaviour
     {
     }
 
-    public void Pursuit()
+    public void Pursue()
     {
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;

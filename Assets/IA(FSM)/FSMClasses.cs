@@ -5,7 +5,7 @@ public class FSMClasses : MonoBehaviour
     State currentState { get; set; }
 
     private PatrolState patrolState;
-    private PursuitState pursuitState;
+    private PursueState pursueState;
     public EnemyControllerFSM enemy;
     private FreezeState freezeState;
     private SearchState searchState;
@@ -16,7 +16,7 @@ public class FSMClasses : MonoBehaviour
         enemy = GetComponent<EnemyControllerFSM>();
         freezeState = new FreezeState(this);
         patrolState = new PatrolState(this);
-        pursuitState = new PursuitState(this);
+        pursueState = new PursueState(this);
         searchState = new SearchState(this);
 
         currentState = patrolState;
@@ -30,9 +30,9 @@ public class FSMClasses : MonoBehaviour
         ChangeState(patrolState);
     }
 
-    public void ChangeToPursuit()
+    public void ChangeToPursue()
     {
-        ChangeState(pursuitState);
+        ChangeState(pursueState);
     }
 
     public void ChangeState(State newState)
@@ -57,7 +57,7 @@ public class FSMClasses : MonoBehaviour
     }
     public void ToSearch() => ChangeState(searchState);
     public void ToPatrol() => ChangeState(patrolState);
-    public void ToPursuit() => ChangeState(pursuitState);
+    public void ToPursue() => ChangeState(pursueState);
     public void ToFreeze() => ChangeState(freezeState);
 }
 
@@ -86,14 +86,14 @@ public class PatrolState : State
 
         if (canSeePlayer)
         {
-            fsm.ToPursuit();
+            fsm.ToPursue();
         }
     }
 }
 
-public class PursuitState : State
+public class PursueState : State
 {
-    public PursuitState(FSMClasses fsm) : base(fsm) { }
+    public PursueState(FSMClasses fsm) : base(fsm) { }
 
     public override void Update(bool canSeePlayer)
     {
@@ -157,7 +157,7 @@ public class SearchState : State
         }
         if (canSeePlayer)
         {
-            fsm.ToPursuit();
+            fsm.ToPursue();
             return;
         }
 
