@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour
     {
         dir = SteeringBehaviours.Evade(transform, player, playerRB, maxPredictionTime);
     }
-    public bool IsPlayerLookingAtMe()
+    public bool IsPlayerLookingAtMe()//
     {
         Vector3 dirToEnemy = (transform.position - player.position).normalized;
 
