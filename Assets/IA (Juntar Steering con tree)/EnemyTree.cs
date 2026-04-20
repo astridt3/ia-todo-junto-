@@ -9,20 +9,21 @@ public class EnemyTree : MonoBehaviour
 
     private void Awake()
     {
-        ActionNode patrolNode = new ActionNode(EnemyModel3 => EnemyModel3.Patrol());
-        ActionNode PursueNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursue());
+        //ActionNode patrolNode = new ActionNode(EnemyModel3 => EnemyModel3.Patrol());
+        //ActionNode PursueNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursue());
         ActionNode WanderNode = new ActionNode(EnemyModel3 => EnemyModel3.Wander());
         ActionNode SeekNode = new ActionNode(EnemyModel3 => EnemyModel3.Seek());
         ActionNode AttackNode = new ActionNode(EnemyController => EnemyController.Attack());
+
+        questionAttackNode = new QuestionNode(context => context.los.IsRange(context.self, context.player)
+         && !context.los.IsObstacle(context.self, context.player),
+         SeekNode,
+         WanderNode);
+        
         rootNode = new QuestionNode(
      context => context.los.IsRangeAttack(context.self, context.player),
      AttackNode,
-     new QuestionNode(
-         context => context.los.IsRange(context.self, context.player)
-         && !context.los.IsObstacle(context.self, context.player),
-         SeekNode,
-         WanderNode
-     )
+     questionAttackNode
  );
 
     }
