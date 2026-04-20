@@ -61,7 +61,7 @@ public static class SteeringBehaviours
     public static Vector3 Evade(Transform self, Transform target, Rigidbody targetRB, float maxPredictionTime)
     {
         Vector3 futurePos = CalculateFuturePos(self, target, targetRB, maxPredictionTime);
-        return Seek(self, futurePos);
+        return Flee(self, futurePos);
     }
     public static Vector3 Wander(Vector3 currentDirection, float maxAngleChange)
     {

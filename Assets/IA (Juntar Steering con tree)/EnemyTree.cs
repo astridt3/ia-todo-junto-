@@ -10,7 +10,7 @@ public class EnemyTree : MonoBehaviour
     private void Awake()
     {
         ActionNode patrolNode = new ActionNode(EnemyModel3 => EnemyModel3.Patrol());//llamar funcion sin un nombre,arrow function
-        ActionNode PursuitNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursuit());
+        ActionNode PursuitNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursue());
         ActionNode WanderNode = new ActionNode(EnemyModel3 => EnemyModel3.Wander());
         ActionNode SeekNode = new ActionNode(EnemyModel3 => EnemyModel3.Seek());
         ActionNode AttackNode = new ActionNode(EnemyController => EnemyController.Attack());

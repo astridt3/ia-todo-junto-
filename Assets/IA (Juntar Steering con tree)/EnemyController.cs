@@ -13,13 +13,15 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float patrolRotationSpeed = 33;
     private Material defaultMaterial;
     private MeshRenderer renderer;
-
     private Rigidbody playerRB;
     private Vector3 wanderDirection;
     private float wanderTime;
     [SerializeField] private float WanderchangeInterval = 1.5f;
     private Vector3 dir;
     private bool isAttacking = false;
+    [SerializeField] private float arriveRadius = 3f;
+    [SerializeField] private float maxPredictionTime = 2f;
+
 
 
     private void Awake()
@@ -48,7 +50,30 @@ public class EnemyController : MonoBehaviour
         desicionTree.Evaluate(this, context);
         Move(dir);
     }
-    public void Pursuit()
+
+    public void FleePlayer()////
+    {
+        dir = SteeringBehaviours.Flee(transform, player.position);
+    }
+
+    public void EvadePlayer()///
+    {
+        dir = SteeringBehaviours.Evade(transform, player, playerRB, maxPredictionTime);
+    }
+    public bool IsPlayerLookingAtMe()///
+    {
+        Vector3 dirToEnemy = (transform.position - player.position).normalized;
+
+        float dot = Vector3.Dot(player.forward, dirToEnemy);
+
+        return dot > 0.7f;
+    }
+
+    public void ArriveToPlayer()///
+    {
+        dir = SteeringBehaviours.Arrive(transform, player.position, arriveRadius);
+    }
+    public void Pursue()
     {
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;
@@ -75,19 +100,8 @@ public class EnemyController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             dir = Vector3.zero;
         }
-            //renderer.material = attackMaterial;
             Debug.Log("Deja de atacar");
     }
-    //public void Wander()
-    //{
-    //    //wanderTime -= Time.deltaTime;
-    //    //if (wanderTime <= 0f)
-    //    //{
-    //    //    wanderDirection = SteeringBehaviours.Wander(wanderDirection, 180f);
-    //    //    wanderTime = WanderchangeInterval;
-    //    //}
-    //    //dir = wanderDirection;
-    //}
     public void Wander()
     {
         wanderTime -= Time.deltaTime;
