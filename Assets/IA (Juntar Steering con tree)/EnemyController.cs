@@ -60,13 +60,13 @@ public class EnemyController : MonoBehaviour
     {
         dir = SteeringBehaviours.Evade(transform, player, playerRB, maxPredictionTime);
     }
-    public bool IsPlayerLookingAtMe()///
+    public bool IsPlayerLookingAtMe()
     {
         Vector3 dirToEnemy = (transform.position - player.position).normalized;
 
-        float dot = Vector3.Dot(player.forward, dirToEnemy);
+        float angle = Vector3.Angle(player.forward, dirToEnemy);
 
-        return dot > 0.7f;
+        return angle < 45f;
     }
 
     public void ArriveToPlayer()///
