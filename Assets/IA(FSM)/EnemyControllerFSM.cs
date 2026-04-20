@@ -115,7 +115,6 @@ public class EnemyControllerFSM : MonoBehaviour
     }
     public void FreezePlayer(float duration)
     {
-        // evita que se acumulen freezes
         if (freezeRoutine != null)
             StopCoroutine(freezeRoutine);
 

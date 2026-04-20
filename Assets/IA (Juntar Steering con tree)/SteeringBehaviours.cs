@@ -4,7 +4,7 @@ public static class SteeringBehaviours
 {
     public static Vector3 Seek(Transform self, Vector3 Target)
     {
-        Vector3 dir = Target - self.position /*+ Vector3(5,0,5)*/;
+        Vector3 dir = Target - self.position;
         dir.y = 0;
         return dir.normalized;
     }
@@ -30,16 +30,6 @@ public static class SteeringBehaviours
 
     public static Vector3 Pursue(Transform self, Transform target, Rigidbody targetRB, float maxPredictionTime)
     {
-        //Vector3 targetVelocity = Vector3.zero;
-        //targetVelocity = targetRB.linearVelocity;
-
-        //Vector3 toTarget = target.position - self.position;
-        //toTarget.y = 0;
-
-        //float distance = toTarget.magnitude;
-        //float predictionTime = Mathf.Clamp(distance / 5f, 0f, maxPredictionTime);
-
-        //Vector3 futurePos = target.position + targetVelocity * predictionTime;
         Vector3 futurePos = CalculateFuturePos(self, target, targetRB, maxPredictionTime);
         return Seek(self, futurePos);
 

@@ -31,17 +31,11 @@ public class EnemyController : MonoBehaviour
         wanderDirection = transform.forward;
         context = new EnemyContext { self = transform, player = player, los = los };
 
-        //dir = Vector3.zero;
-        //renderer = GetComponent<MeshRenderer>();
-
     }
 
     private void Start()
     {
         player = GameObject.Find("player").transform;
-
-        //renderer = GetComponent<MeshRenderer>();
-        //defaultMaterial = GetComponent<MeshRenderer>().material;
     }
 
     public void Update()
