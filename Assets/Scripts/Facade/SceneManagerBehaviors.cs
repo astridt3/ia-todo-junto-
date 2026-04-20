@@ -11,7 +11,7 @@ public class SceneManagerBehaviors : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("LevelsScene");
+        SceneManager.LoadScene("LevelsScenee");
         Singleton.instance._inGame = true;
     }
     public void ExitButton()
