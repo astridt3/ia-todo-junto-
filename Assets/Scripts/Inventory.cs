@@ -219,7 +219,7 @@ public class Inventory : MonoBehaviour
         gameObjectsToAchieve.Remove(objectToDrop);
 
         hasAnObject = false;
-
+        
         if (gameObjectsToAchieve.Count >= 1)
         {
             SortingInventory();

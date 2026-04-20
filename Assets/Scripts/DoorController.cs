@@ -49,44 +49,6 @@ public class DoorController : MonoBehaviour, IInteractable
             colliderWhenClose.enabled = false;
         }
     }
-  // asegurar valor final exacto
-     
+
 }
-
-
-
-
-
-    //private Animator animator;
-    //private bool isOpen = false;
-
-    //private void Awake()
-    //{
-    //    // Si el Animator está en un hijo, usamos InChildren
-    //    animator = GetComponent<Animator>();
-    //    if (animator == null)
-    //    {
-    //        Debug.LogError("No se encontró Animator en la puerta.");
-    //    }
-    //}
-
-    //public void Interact()
-    //{
-    //    if (isOpen)
-    //    {
-    //        Debug.Log("Cerrando puerta");
-    //        animator.SetTrigger("Close");
-    //        isOpen = false;
-    //    }
-    //    else if (!isOpen)
-    //    {
-    //        Debug.Log("Abriendo puerta");
-    //        animator.SetTrigger("Open");
-    //        isOpen = true;
-    //    }
-    //}
-    //public void IdleTime()
-    //{
-    //    animator.Play("Idle");
-    //}
 

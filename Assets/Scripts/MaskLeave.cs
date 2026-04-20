@@ -5,10 +5,12 @@ public class MaskLeave : MonoBehaviour
 {
     [SerializeField] private string maskLeaved;
     private GameObject keyToLeave;
-
+    [SerializeField] private Light spotLight;
     private void Start()
     {
         keyToLeave = GameObject.Find("KeyExit");
+        if (spotLight != null)
+            spotLight.intensity = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,19 +46,10 @@ public class MaskLeave : MonoBehaviour
     }
     private void SpawnSpotLight()
     {
-        GameObject luz = new GameObject("SpotLightSpawn");
-        Light light = luz.AddComponent<Light>();
-
-        light.type = LightType.Spot;
-        light.color = Color.yellow;
-        light.intensity = 500f;
-        light.range = 10f;
-        light.spotAngle = 30f;
-        light.innerSpotAngle = 40f;
-
-        luz.transform.position = new Vector3(21.72f, 42.82f, - 12.31f);
-        luz.transform.rotation = Quaternion.Euler(88.658f, 180f, 0f);
-
+        if (spotLight != null)
+        {
+            spotLight.intensity = 5000f;
+        }
     }
     private void CreateKey()
     {
