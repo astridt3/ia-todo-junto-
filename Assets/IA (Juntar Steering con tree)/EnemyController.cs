@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     private bool isAttacking = false;
     [SerializeField] private float arriveRadius = 3f;
     [SerializeField] private float maxPredictionTime = 2f;
-
+    private bool alerted;
 
 
     private void Awake()
@@ -41,7 +41,14 @@ public class EnemyController : MonoBehaviour
     public void Update()
     {
         context.player = player;
-        desicionTree.Evaluate(this, context);
+        //if (alerted)
+        //{
+        //    Seek();
+        //}
+        //else
+        //{
+            desicionTree.Evaluate(this, context);
+        //}
         Move(dir);
     }
 
@@ -113,6 +120,14 @@ public class EnemyController : MonoBehaviour
         dir = SteeringBehaviours.Seek(transform, player.transform.position);
 
         Debug.Log("vAYA123");
+    }
+    public void Alert()
+    {
+        alerted = true;
+    }
+    public void StopAlert()
+    {
+        alerted = false;
     }
 
     private void Move(Vector3 dir)
