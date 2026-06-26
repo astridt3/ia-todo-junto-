@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +12,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed = 3;
     [SerializeField] private float rotationSpeed = 33;
     [SerializeField] private float patrolRotationSpeed = 33;
-    private Material defaultMaterial;
-    private MeshRenderer renderer;
     private Rigidbody playerRB;
     private Vector3 wanderDirection;
     private float wanderTime;
@@ -21,7 +20,11 @@ public class EnemyController : MonoBehaviour
     private bool isAttacking = false;
     [SerializeField] private float arriveRadius = 3f;
     [SerializeField] private float maxPredictionTime = 2f;
+    [SerializeField] private Node[] allNodes;
 
+    private List<Node> currentPath = new List<Node>();
+    private int currentNodeIndex = 0;
+    private bool usingPath = false;
 
 
     private void Awake()
@@ -81,8 +84,6 @@ public class EnemyController : MonoBehaviour
     public void Patrol()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-
-        renderer.material = defaultMaterial;
     }
     
     public void Attack()
@@ -110,9 +111,74 @@ public class EnemyController : MonoBehaviour
     }
     public void Seek()
     {
-        dir = SteeringBehaviours.Seek(transform, player.transform.position);
+        if (!los.IsObstacle(transform, player))
+        {
+            usingPath = false;
+            dir = SteeringBehaviours.Seek(transform, player.position);
+        }
+        else
+        {
+            if (!usingPath)
+                CalculatePath();
 
-        Debug.Log("vAYA123");
+            FollowPath();
+        }
+    }
+
+    private Node GetClosestNode(Vector3 pos)
+    {
+        Node closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (Node node in allNodes)
+        {
+            float dist = Vector3.Distance(pos, node.transform.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = node;
+            }
+        }
+
+        return closest;
+    }
+
+    private void CalculatePath()
+    {
+        Node start = GetClosestNode(transform.position);
+        Node goal = GetClosestNode(player.position);
+
+        currentPath = Dijkstra.Run(
+            start,
+            node => node == goal,
+            node => node.neightbourds,
+            (a, b) => Vector3.Distance(a.transform.position, b.transform.position)
+        );
+
+        currentNodeIndex = 0;
+        usingPath = currentPath.Count > 0;
+    }
+
+    private void FollowPath()
+    {
+        if (!usingPath)
+            return;
+
+        if (currentNodeIndex >= currentPath.Count)
+        {
+            usingPath = false;
+            return;
+        }
+
+        Vector3 targetPos = currentPath[currentNodeIndex].transform.position;
+
+        dir = SteeringBehaviours.Seek(transform, targetPos);
+
+        if (Vector3.Distance(transform.position, targetPos) < 0.3f)
+        {
+            currentNodeIndex++;
+        }
     }
 
     private void Move(Vector3 dir)
