@@ -8,7 +8,9 @@ public class EnemyController : MonoBehaviour
     private LineOfSight los;
     private EnemyTree desicionTree;
     private EnemyContext context;
-
+    private Vector3 lastSeenPosition;
+    private bool hasLastSeenPosition = false;
+    private bool obstacleDetected = false;
     [SerializeField] private float speed = 3;
     [SerializeField] private float rotationSpeed = 33;
     [SerializeField] private float patrolRotationSpeed = 33;
@@ -26,7 +28,8 @@ public class EnemyController : MonoBehaviour
     private int currentNodeIndex = 0;
     private bool usingPath = false;
 
-
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private float obstacleDetectionDistance = 2f;
     private void Awake()
     {
         los = GetComponent<LineOfSight>();
@@ -43,6 +46,11 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
+        if (!los.IsObstacle(transform, player) && los.IsRange(transform, player))
+        {
+            lastSeenPosition = player.position;
+            hasLastSeenPosition = true;
+        }
         context.player = player;
         desicionTree.Evaluate(this, context);
         Move(dir);
@@ -65,7 +73,20 @@ public class EnemyController : MonoBehaviour
 
         return angle < 45f;
     }
+    private bool DetectObstacleAhead()
+    {
+        Vector3 origin = transform.position + Vector3.up * 0.5f;
 
+        Vector3 direction = (player.position - transform.position).normalized;
+        Debug.DrawRay(origin, direction * obstacleDetectionDistance, Color.red);
+        return Physics.Raycast(
+            origin,
+            direction,
+            obstacleDetectionDistance,
+            obstacleLayer
+        );
+
+    }
     public void ArriveToPlayer()///
     {
         dir = SteeringBehaviours.Arrive(transform, player.position, arriveRadius);
@@ -85,7 +106,14 @@ public class EnemyController : MonoBehaviour
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            usingPath = false;
+            CalculatePath();
+        }
+    }
     public void Attack()
     {
         Debug.Log("Empieza a atacar");
@@ -111,18 +139,14 @@ public class EnemyController : MonoBehaviour
     }
     public void Seek()
     {
-        if (!los.IsObstacle(transform, player))
+        if (DetectObstacleAhead())
         {
-            usingPath = false;
-            dir = SteeringBehaviours.Seek(transform, player.position);
-        }
-        else
-        {
-            if (!usingPath)
-                CalculatePath();
-
+            CalculatePath();
             FollowPath();
         }
+
+        usingPath = false;
+        dir = SteeringBehaviours.Seek(transform, player.position);
     }
 
     private Node GetClosestNode(Vector3 pos)
@@ -146,7 +170,11 @@ public class EnemyController : MonoBehaviour
 
     private void CalculatePath()
     {
+        Debug.Log("Camino encontrado: " + currentPath.Count);
         Node start = GetClosestNode(transform.position);
+        if (!hasLastSeenPosition)
+            return;
+
         Node goal = GetClosestNode(player.position);
 
         currentPath = Dijkstra.Run(
@@ -155,13 +183,23 @@ public class EnemyController : MonoBehaviour
             node => node.neightbourds,
             (a, b) => Vector3.Distance(a.transform.position, b.transform.position)
         );
-
-        currentNodeIndex = 0;
+        if (currentPath.Count == 0)
+        {
+            usingPath = false;
+            return;
+        }
+        usingPath = true;
+        currentNodeIndex = currentPath.Count > 1 ? 1 : 0;
         usingPath = currentPath.Count > 0;
+        foreach (Node n in currentPath)
+        {
+            Debug.Log(n.name);
+        }
     }
 
     private void FollowPath()
     {
+        Debug.Log("Siguiendo camino");
         if (!usingPath)
             return;
 
