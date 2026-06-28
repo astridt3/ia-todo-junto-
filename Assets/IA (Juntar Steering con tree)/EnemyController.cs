@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private float obstacleDetectionDistance = 2f;
+
+    private bool chasingPlayer = false;
     private void Awake()
     {
         los = GetComponent<LineOfSight>();
@@ -46,19 +48,23 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
-        if (!los.IsObstacle(transform, player) && los.IsRange(transform, player))
-        {
-            lastSeenPosition = player.position;
-            hasLastSeenPosition = true;
-        }
         context.player = player;
+
         desicionTree.Evaluate(this, context);
+
         Move(dir);
     }
 
     public void FleePlayer()////
     {
         dir = SteeringBehaviours.Flee(transform, player.position);
+    }
+    public void PatrolNodes()
+    {
+        if (!usingPath)
+            CalculatePatrolPath();
+
+        FollowPath();
     }
 
     public void EvadePlayer()///
@@ -73,20 +79,7 @@ public class EnemyController : MonoBehaviour
 
         return angle < 45f;
     }
-    private bool DetectObstacleAhead()
-    {
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-
-        Vector3 direction = (player.position - transform.position).normalized;
-        Debug.DrawRay(origin, direction * obstacleDetectionDistance, Color.red);
-        return Physics.Raycast(
-            origin,
-            direction,
-            obstacleDetectionDistance,
-            obstacleLayer
-        );
-
-    }
+    
     public void ArriveToPlayer()///
     {
         dir = SteeringBehaviours.Arrive(transform, player.position, arriveRadius);
@@ -101,19 +94,30 @@ public class EnemyController : MonoBehaviour
 
         transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotationSpeed);
     }
+    private void CalculatePatrolPath()
+    {
+        Node start = GetClosestNode(transform.position);
 
+        Node goal = allNodes[Random.Range(0, allNodes.Length)];
+
+        currentPath = Dijkstra.Run(
+            start,
+            node => node == goal,
+            node => node.neightbourds,
+            (a, b) => Vector3.Distance(a.transform.position, b.transform.position)
+        );
+
+        if (currentPath.Count == 0)
+            return;
+
+        currentNodeIndex = currentPath.Count > 1 ? 1 : 0;
+        usingPath = true;
+    }
     public void Patrol()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            usingPath = false;
-            CalculatePath();
-        }
-    }
+   
     public void Attack()
     {
         Debug.Log("Empieza a atacar");
@@ -139,14 +143,17 @@ public class EnemyController : MonoBehaviour
     }
     public void Seek()
     {
-        if (DetectObstacleAhead())
+        if (los.IsObstacle(transform, player))
         {
             CalculatePath();
+
             FollowPath();
         }
-
-        usingPath = false;
-        dir = SteeringBehaviours.Seek(transform, player.position);
+        else
+        {
+            usingPath = false;
+            dir = SteeringBehaviours.Seek(transform, player.position);
+        }
     }
 
     private Node GetClosestNode(Vector3 pos)
@@ -216,6 +223,18 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) < 0.3f)
         {
             currentNodeIndex++;
+        }
+    }
+    public void ChaseWithPath()
+    {
+        if (!usingPath)
+            CalculatePath();
+
+        FollowPath();
+
+        if (!los.IsObstacle(transform, player))
+        {
+            usingPath = false;
         }
     }
 

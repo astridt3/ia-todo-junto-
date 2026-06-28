@@ -11,20 +11,28 @@ public class EnemyTree : MonoBehaviour
     {
         //ActionNode patrolNode = new ActionNode(EnemyModel3 => EnemyModel3.Patrol());
         //ActionNode PursueNode = new ActionNode(EnemyModel3 => EnemyModel3.Pursue());
-        ActionNode WanderNode = new ActionNode(EnemyModel3 => EnemyModel3.Wander());
-        ActionNode SeekNode = new ActionNode(EnemyModel3 => EnemyModel3.Seek());
-        ActionNode AttackNode = new ActionNode(EnemyController => EnemyController.Attack());
+        ActionNode attackNode = new ActionNode(enemy => enemy.Attack());
+        ActionNode seekNode = new ActionNode(enemy => enemy.Seek());
+        ActionNode pathNode = new ActionNode(enemy => enemy.ChaseWithPath());
+        ActionNode patrolNode = new ActionNode(enemy => enemy.PatrolNodes());
 
-        questionAttackNode = new QuestionNode(context => context.los.IsRange(context.self, context.player)
-         && !context.los.IsObstacle(context.self, context.player),
-         SeekNode,
-         WanderNode);
-        
+        QuestionNode obstacleNode = new QuestionNode(
+            context => context.los.IsObstacle(context.self, context.player),
+            pathNode,
+            seekNode
+        );
+
+        QuestionNode chaseNode = new QuestionNode(
+            context => context.los.IsRange(context.self, context.player),
+            obstacleNode,
+            patrolNode
+        );
+
         rootNode = new QuestionNode(
-     context => context.los.IsRangeAttack(context.self, context.player),
-     AttackNode,
-     questionAttackNode
- );
+            context => context.los.IsRangeAttack(context.self, context.player),
+            attackNode,
+            chaseNode
+        );
 
     }
 
