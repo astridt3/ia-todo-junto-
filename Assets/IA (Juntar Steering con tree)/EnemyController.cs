@@ -206,9 +206,14 @@ public class EnemyController : MonoBehaviour
 
     private void FollowPath()
     {
-        Debug.Log("Siguiendo camino");
         if (!usingPath)
             return;
+
+        if (currentPath == null || currentPath.Count == 0)
+        {
+            usingPath = false;
+            return;
+        }
 
         if (currentNodeIndex >= currentPath.Count)
         {
@@ -216,13 +221,25 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
+        Debug.Log("Voy hacia el nodo: " + currentPath[currentNodeIndex].name);
+
         Vector3 targetPos = currentPath[currentNodeIndex].transform.position;
 
         dir = SteeringBehaviours.Seek(transform, targetPos);
 
         if (Vector3.Distance(transform.position, targetPos) < 0.3f)
         {
+            Debug.Log("Llegué al nodo: " + currentPath[currentNodeIndex].name);
+
             currentNodeIndex++;
+
+            if (currentNodeIndex < currentPath.Count)
+                Debug.Log("Siguiente nodo: " + currentPath[currentNodeIndex].name);
+            else
+            {
+                Debug.Log("Fin del camino");
+                usingPath = false;
+            }
         }
     }
     public void ChaseWithPath()
@@ -247,5 +264,22 @@ public class EnemyController : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotationSpeed);
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (currentPath == null || currentPath.Count < 2)
+            return;
 
+        Gizmos.color = Color.green;
+
+        for (int i = 0; i < currentPath.Count - 1; i++)
+        {
+            Gizmos.DrawLine(
+                currentPath[i].transform.position,
+                currentPath[i + 1].transform.position);
+
+            Gizmos.DrawSphere(currentPath[i].transform.position, 0.15f);
+        }
+
+        Gizmos.DrawSphere(currentPath[currentPath.Count - 1].transform.position, 0.15f);
+    }
 }
