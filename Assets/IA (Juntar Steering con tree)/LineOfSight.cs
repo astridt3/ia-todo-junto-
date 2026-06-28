@@ -34,8 +34,18 @@ public class LineOfSight : MonoBehaviour
 
     public bool IsObstacle(Transform self, Transform target)
     {
-        Vector3 dir = target.position - self.position;
+        BoxCollider box = self.GetComponent<BoxCollider>();
 
-        return Physics.Raycast(self.position, dir.normalized, dir.magnitude, obs);
+        Vector3 dir = (target.position - self.position).normalized;
+        float distance = Vector3.Distance(self.position, target.position);
+
+        return Physics.BoxCast(
+            box.bounds.center,
+            box.bounds.extents,
+            dir,
+            self.rotation,
+            distance,
+            obs
+        );
     }
 }

@@ -260,7 +260,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5075923
 MonoBehaviour:
@@ -1247,7 +1247,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &66441824
 MonoBehaviour:
@@ -1386,7 +1386,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &72074507
 MonoBehaviour:
@@ -1525,7 +1525,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &74589196
 MonoBehaviour:
@@ -2522,7 +2522,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &120826484
 MonoBehaviour:
@@ -2913,7 +2913,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &154335814
 MonoBehaviour:
@@ -2994,7 +2994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neightbourds:
   - {fileID: 1117136645}
-  - {fileID: 193585153}
   - {fileID: 1175345268}
   hasTrap: 0
 --- !u!1001 &164761156
@@ -3745,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e91f83ddbf057747b989a3e6bad0736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.603
+      value: 0.93
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e91f83ddbf057747b989a3e6bad0736, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3753,7 +3752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e91f83ddbf057747b989a3e6bad0736, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.846127
+      value: -49.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e91f83ddbf057747b989a3e6bad0736, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3896,7 +3895,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &193585150
 MonoBehaviour:
@@ -4579,7 +4578,7 @@ Transform:
   m_GameObject: {fileID: 238906034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.43025494, y: 1, z: 5.4100003}
+  m_LocalPosition: {x: -0.76, y: 1, z: 5.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4604,7 +4603,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &238906037
 MonoBehaviour:
@@ -5766,7 +5765,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &321783926
 MonoBehaviour:
@@ -7248,7 +7247,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &414838317
 MonoBehaviour:
@@ -7329,9 +7328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neightbourds:
   - {fileID: 742399722}
-  - {fileID: 1452019958}
   - {fileID: 1500320924}
-  - {fileID: 1769448222}
   hasTrap: 0
 --- !u!1001 &422848791
 PrefabInstance:
@@ -7510,7 +7507,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &434640267
 MonoBehaviour:
@@ -7648,7 +7645,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &441031938
 MonoBehaviour:
@@ -8129,7 +8126,7 @@ Transform:
   m_GameObject: {fileID: 464535318}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.55, y: 1, z: -6.5726466}
+  m_LocalPosition: {x: 13.55, y: 1, z: -6.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8154,7 +8151,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &464535321
 MonoBehaviour:
@@ -8484,7 +8481,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &476667186
 MonoBehaviour:
@@ -8565,9 +8562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neightbourds:
   - {fileID: 1372715723}
-  - {fileID: 1452019958}
   - {fileID: 66441827}
-  - {fileID: 1769448222}
   hasTrap: 0
 --- !u!1 &480674708
 GameObject:
@@ -9016,7 +9011,7 @@ Transform:
   m_GameObject: {fileID: 513859652}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.55, y: 1, z: -6.5726466}
+  m_LocalPosition: {x: 7.55, y: 1, z: -7.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9041,7 +9036,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &513859655
 MonoBehaviour:
@@ -9123,8 +9118,6 @@ MonoBehaviour:
   neightbourds:
   - {fileID: 74589199}
   - {fileID: 120826487}
-  - {fileID: 1756950281}
-  - {fileID: 1812699097}
   - {fileID: 827314591}
   hasTrap: 0
 --- !u!4 &522761831 stripped
@@ -9192,7 +9185,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &527694592
 MonoBehaviour:
@@ -9275,8 +9268,6 @@ MonoBehaviour:
   - {fileID: 2092371429}
   - {fileID: 1520112941}
   - {fileID: 1891764641}
-  - {fileID: 1770052563}
-  - {fileID: 1418621688}
   hasTrap: 0
 --- !u!1001 &536480484
 PrefabInstance:
@@ -9459,7 +9450,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &537982994
 MonoBehaviour:
@@ -9545,116 +9536,6 @@ MonoBehaviour:
   - {fileID: 193585153}
   - {fileID: 1903757083}
   hasTrap: 0
---- !u!1001 &539444801
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1765265592}
-    m_Modifications:
-    - target: {fileID: 978069961071320986, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2871858
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.8268805
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6543282
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.7200804
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.8014603
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.3107567
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.1996211
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9798732
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 203.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928686477387607680, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082365485943724895, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 114f4b6fbaf01f2438abab6042ab9a03, type: 2}
-    - target: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Name
-      value: RandomObject01 (31)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3887426783934517069, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4563001450119770621, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4728743113829813812, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Size.x
-      value: 1.564593
-      objectReference: {fileID: 0}
-    - target: {fileID: 4728743113829813812, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Center.x
-      value: 0.0046018152
-      objectReference: {fileID: 0}
-    - target: {fileID: 4728743113829813812, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Center.z
-      value: 0.07172229
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
---- !u!4 &539444802 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-  m_PrefabInstance: {fileID: 539444801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &543538966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9949,7 +9830,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &548166645
 MonoBehaviour:
@@ -10033,7 +9914,6 @@ MonoBehaviour:
   - {fileID: 5075926}
   - {fileID: 1605539607}
   - {fileID: 2041664799}
-  - {fileID: 1700225389}
   hasTrap: 0
 --- !u!1 &551433498
 GameObject:
@@ -11174,7 +11054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 317342cd83ed76f4a82246a45942153e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4399995
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 317342cd83ed76f4a82246a45942153e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11182,7 +11062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 317342cd83ed76f4a82246a45942153e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -62.410004
+      value: -63.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 317342cd83ed76f4a82246a45942153e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11419,7 +11299,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &630428025
 MonoBehaviour:
@@ -11503,8 +11383,6 @@ MonoBehaviour:
   - {fileID: 1175345268}
   - {fileID: 1854781309}
   - {fileID: 742399722}
-  - {fileID: 1452019958}
-  - {fileID: 1577282348}
   hasTrap: 0
 --- !u!1 &634856116
 GameObject:
@@ -11727,7 +11605,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &659199543
 MonoBehaviour:
@@ -12876,7 +12754,7 @@ Transform:
   m_GameObject: {fileID: 733316796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.55, y: 1, z: -6.5726466}
+  m_LocalPosition: {x: 11.55, y: 1, z: -7.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12901,7 +12779,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &733316799
 MonoBehaviour:
@@ -13041,7 +12919,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &742399719
 MonoBehaviour:
@@ -14060,7 +13938,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &795755200
 MonoBehaviour:
@@ -14583,7 +14461,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &802760248
 MonoBehaviour:
@@ -14663,11 +14541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 2035821031}
-  - {fileID: 1504615060}
   - {fileID: 1036325497}
   - {fileID: 1891764641}
-  - {fileID: 1901889583}
   hasTrap: 0
 --- !u!1 &805147941
 GameObject:
@@ -14724,7 +14599,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &805147944
 MonoBehaviour:
@@ -14808,7 +14683,6 @@ MonoBehaviour:
   - {fileID: 1891764641}
   - {fileID: 1901889583}
   - {fileID: 1059126231}
-  - {fileID: 1449290235}
   hasTrap: 0
 --- !u!1 &809332768
 GameObject:
@@ -15207,7 +15081,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &827314588
 MonoBehaviour:
@@ -16795,7 +16669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2500005
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16803,7 +16677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.950003
+      value: -26.41
       objectReference: {fileID: 0}
     - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17565,7 +17439,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1036325494
 MonoBehaviour:
@@ -17974,7 +17848,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1059126228
 MonoBehaviour:
@@ -18117,7 +17991,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1071920985
 MonoBehaviour:
@@ -18595,7 +18469,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1081108798
 MonoBehaviour:
@@ -19027,7 +18901,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1095438466
 MonoBehaviour:
@@ -19274,7 +19148,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1100921707
 MonoBehaviour:
@@ -19358,6 +19232,7 @@ MonoBehaviour:
   - {fileID: 1352788061}
   - {fileID: 2035821031}
   - {fileID: 2092371429}
+  - {fileID: 2015056917}
   hasTrap: 0
 --- !u!1 &1105762749
 GameObject:
@@ -19699,7 +19574,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1117136642
 MonoBehaviour:
@@ -19779,7 +19654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 1854781309}
   - {fileID: 321783929}
   - {fileID: 154335817}
   - {fileID: 193585153}
@@ -21040,7 +20914,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1161434829
 MonoBehaviour:
@@ -21272,7 +21146,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1175345265
 MonoBehaviour:
@@ -21352,7 +21226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 321783929}
   - {fileID: 1577282348}
   - {fileID: 154335817}
   hasTrap: 0
@@ -21411,7 +21284,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1198171984
 MonoBehaviour:
@@ -21491,7 +21364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 1352788061}
   - {fileID: 1968471311}
   hasTrap: 0
 --- !u!1 &1203057049
@@ -22771,7 +22643,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1283004582
 MonoBehaviour:
@@ -22910,7 +22782,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1291113786
 MonoBehaviour:
@@ -24268,7 +24140,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1352788058
 MonoBehaviour:
@@ -24348,11 +24220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 1560594545}
   - {fileID: 1968471311}
   - {fileID: 1100921710}
-  - {fileID: 2035821031}
-  hasTrap: 0
+  hasTrap: 1
 --- !u!1 &1353639706
 GameObject:
   m_ObjectHideFlags: 0
@@ -24755,7 +24625,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1372715720
 MonoBehaviour:
@@ -25666,7 +25536,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1418621685
 MonoBehaviour:
@@ -25746,7 +25616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 527694595}
   - {fileID: 1891764641}
   - {fileID: 1901889583}
   - {fileID: 238906040}
@@ -26404,7 +26273,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1438802859
 MonoBehaviour:
@@ -26600,7 +26469,7 @@ Transform:
   m_GameObject: {fileID: 1449290229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.57, y: 1, z: 2.32}
+  m_LocalPosition: {x: 3.57, y: 1, z: 2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26625,7 +26494,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1449290232
 MonoBehaviour:
@@ -26705,7 +26574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neightbourds:
-  - {fileID: 548166648}
   - {fileID: 1901889583}
   - {fileID: 805147947}
   - {fileID: 1528050642}
@@ -26765,7 +26633,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1452019955
 MonoBehaviour:
@@ -26847,10 +26715,8 @@ MonoBehaviour:
   neightbourds:
   - {fileID: 476667189}
   - {fileID: 1372715723}
-  - {fileID: 1095438469}
   - {fileID: 414838320}
   - {fileID: 742399722}
-  - {fileID: 630428028}
   hasTrap: 0
 --- !u!1001 &1453057793
 PrefabInstance:
@@ -27290,7 +27156,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1500320921
 MonoBehaviour:
@@ -27534,7 +27400,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1504615057
 MonoBehaviour:
@@ -27930,7 +27796,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1520112938
 MonoBehaviour:
@@ -28070,7 +27936,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1528050639
 MonoBehaviour:
@@ -28908,7 +28774,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1560594542
 MonoBehaviour:
@@ -29046,7 +28912,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1571475095
 MonoBehaviour:
@@ -29186,7 +29052,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1577282345
 MonoBehaviour:
@@ -29268,7 +29134,6 @@ MonoBehaviour:
   neightbourds:
   - {fileID: 321783929}
   - {fileID: 1175345268}
-  - {fileID: 630428028}
   - {fileID: 1095438469}
   hasTrap: 0
 --- !u!1001 &1582585115
@@ -29778,7 +29643,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1605539604
 MonoBehaviour:
@@ -31376,7 +31241,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1700225386
 MonoBehaviour:
@@ -32423,7 +32288,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1756950278
 MonoBehaviour:
@@ -32703,7 +32568,6 @@ Transform:
   - {fileID: 536480485}
   - {fileID: 1909821210}
   - {fileID: 618783256}
-  - {fileID: 2123221931}
   - {fileID: 564576331}
   - {fileID: 1325970580}
   - {fileID: 543538967}
@@ -32712,7 +32576,6 @@ Transform:
   - {fileID: 1964015645}
   - {fileID: 557190104}
   - {fileID: 251309511}
-  - {fileID: 539444802}
   - {fileID: 919519635}
   - {fileID: 1974528825}
   - {fileID: 207829984}
@@ -32971,7 +32834,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1769448219
 MonoBehaviour:
@@ -33221,7 +33084,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1770052560
 MonoBehaviour:
@@ -33302,7 +33165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neightbourds:
   - {fileID: 1520112941}
-  - {fileID: 527694595}
   - {fileID: 1571475098}
   - {fileID: 1071920988}
   hasTrap: 0
@@ -33920,7 +33782,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1812699094
 MonoBehaviour:
@@ -34318,7 +34180,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1825125186
 MonoBehaviour:
@@ -34673,7 +34535,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1842283013
 MonoBehaviour:
@@ -35136,7 +34998,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1852417476
 MonoBehaviour:
@@ -35330,7 +35192,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1854781306
 MonoBehaviour:
@@ -35535,7 +35397,6 @@ GameObject:
   - component: {fileID: 1891764636}
   - component: {fileID: 1891764640}
   - component: {fileID: 1891764639}
-  - component: {fileID: 1891764638}
   - component: {fileID: 1891764637}
   - component: {fileID: 1891764641}
   m_Layer: 6
@@ -35579,20 +35440,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1891764638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891764635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a1155f32277c449ad7f602e74053f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1891764639
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35720,7 +35569,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1901889580
 MonoBehaviour:
@@ -35860,7 +35709,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1903757080
 MonoBehaviour:
@@ -36003,7 +35852,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1904745482
 MonoBehaviour:
@@ -37571,7 +37420,7 @@ Transform:
   m_GameObject: {fileID: 1968471305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.430255, y: 1, z: -4.5726466}
+  m_LocalPosition: {x: -2.78, y: 1, z: -4.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37596,7 +37445,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1968471308
 MonoBehaviour:
@@ -37680,6 +37529,8 @@ MonoBehaviour:
   - {fileID: 1100921710}
   - {fileID: 2035821031}
   - {fileID: 1036325497}
+  - {fileID: 1560594545}
+  - {fileID: 1198171987}
   hasTrap: 0
 --- !u!1001 &1971908841
 PrefabInstance:
@@ -38420,7 +38271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d39c44dabf7f2e49ae20471d1387ba2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.43
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d39c44dabf7f2e49ae20471d1387ba2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38428,7 +38279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d39c44dabf7f2e49ae20471d1387ba2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.89
+      value: -3.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d39c44dabf7f2e49ae20471d1387ba2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38591,7 +38442,6 @@ MonoBehaviour:
   - {fileID: 2092371429}
   - {fileID: 1520112941}
   - {fileID: 1100921710}
-  - {fileID: 0}
   hasTrap: 0
 --- !u!65 &2015056918
 BoxCollider:
@@ -38612,7 +38462,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2015056919
 MonoBehaviour:
@@ -38734,7 +38584,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2030760546
 MonoBehaviour:
@@ -38940,7 +38790,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2035821028
 MonoBehaviour:
@@ -39021,11 +38871,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neightbourds:
   - {fileID: 1968471311}
-  - {fileID: 1352788061}
   - {fileID: 1100921710}
-  - {fileID: 2092371429}
   - {fileID: 1036325497}
-  - {fileID: 802760251}
   hasTrap: 0
 --- !u!1 &2041664793
 GameObject:
@@ -39082,7 +38929,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2041664796
 MonoBehaviour:
@@ -39870,7 +39717,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2092371426
 MonoBehaviour:
@@ -40289,7 +40136,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2115461145
 MonoBehaviour:
@@ -40371,137 +40218,6 @@ MonoBehaviour:
   neightbourds:
   - {fileID: 74589199}
   hasTrap: 0
---- !u!1001 &2123221930
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1765265592}
-    m_Modifications:
-    - target: {fileID: 978069961071320986, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.21744658
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.20776993
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.24142794
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.1010008
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.5097
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5597538
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.82865894
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -111.922
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928686477387607680, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082365485943724895, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e585b401852067344807851cef23d59e, type: 2}
-    - target: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Name
-      value: RandomObject01 (41)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 3887426783934517069, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4124092098085499554, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4124092098085499554, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4563001450119770621, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2123221933}
-  m_SourcePrefab: {fileID: 100100000, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
---- !u!4 &2123221931 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1223884540115263890, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-  m_PrefabInstance: {fileID: 2123221930}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2123221932 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2832727742972686786, guid: 3b59927c0624c904f9e1d9e2295d9a39, type: 3}
-  m_PrefabInstance: {fileID: 2123221930}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2123221933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123221932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71a0b1111c7ebc41a061b8c61f5fd38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: Nothing
 --- !u!1 &2123557171
 GameObject:
   m_ObjectHideFlags: 0
@@ -40557,7 +40273,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2123557174
 MonoBehaviour:
