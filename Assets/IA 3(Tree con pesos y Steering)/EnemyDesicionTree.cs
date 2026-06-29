@@ -18,7 +18,7 @@ public class EnemyDecisionTree : MonoBehaviour
         WeightedRandomActionNode notLookingNode = new WeightedRandomActionNode(
             new (float, System.Action<EnemyController3>)[]
             {
-                (70f, enemy => enemy.ArriveToPlayer()),
+                (70f, enemy => enemy.ArriveThetaStar()),
                 (20f, enemy => enemy.EvadePlayer()),
                 (10f, enemy => enemy.Idle())
             }
