@@ -976,6 +976,45 @@ MonoBehaviour:
   rotationSpeed: 33
   arriveRadius: 3
   maxPredictionTime: 2
+  allNodes:
+  - {fileID: 958525312}
+  - {fileID: 1560941757}
+  - {fileID: 1484461521}
+  - {fileID: 984066390}
+  - {fileID: 198984947}
+  - {fileID: 1540972541}
+  - {fileID: 117313218}
+  - {fileID: 1908034275}
+  - {fileID: 361776863}
+  - {fileID: 193096340}
+  - {fileID: 460570029}
+  - {fileID: 351812824}
+  - {fileID: 1078596965}
+  - {fileID: 166907308}
+  - {fileID: 1444600744}
+  - {fileID: 1217700904}
+  - {fileID: 592835547}
+  - {fileID: 2071969206}
+  - {fileID: 992077159}
+  - {fileID: 1846386810}
+  - {fileID: 2034762324}
+  - {fileID: 742081118}
+  - {fileID: 129454513}
+  - {fileID: 954426367}
+  - {fileID: 1875851826}
+  - {fileID: 2038987600}
+  - {fileID: 1654868876}
+  - {fileID: 1994389107}
+  - {fileID: 1861270132}
+  - {fileID: 1743287245}
+  - {fileID: 1822375571}
+  - {fileID: 1330331882}
+  - {fileID: 612583506}
+  - {fileID: 553527964}
+  - {fileID: 1828565253}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &41177090
 GameObject:
   m_ObjectHideFlags: 0
