@@ -179,8 +179,8 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Camino encontrado: " + currentPath.Count);
         Node start = GetClosestNode(transform.position);
-        if (!hasLastSeenPosition)
-            return;
+        //if (!hasLastSeenPosition)
+        //    return;
 
         Node goal = GetClosestNode(player.position);
 
