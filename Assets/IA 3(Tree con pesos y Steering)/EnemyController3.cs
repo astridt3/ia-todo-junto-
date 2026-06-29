@@ -80,6 +80,8 @@ public class EnemyController3 : MonoBehaviour
         if (currentPath.Count == 0)
         {
             usingPath = false;
+            currentPath.Clear();
+            currentNodeIndex = 0;
             return;
         }
 
@@ -88,28 +90,33 @@ public class EnemyController3 : MonoBehaviour
     }
     public void ArriveThetaStar()
     {
-        if (usingPath)
+        Vector3 dirToPlayer = player.position - transform.position;
+
+        bool obstacleBetween =
+            Physics.Raycast(
+                transform.position + Vector3.up * 0.5f,
+                dirToPlayer.normalized,
+                dirToPlayer.magnitude,
+                obstacleMask);
+
+        // Si ya no hay obstáculo, perseguir directamente
+        if (!obstacleBetween)
         {
-            FollowThetaPath();
+            usingPath = false;
+            currentPath.Clear();
+            currentNodeIndex = 0;
 
-            if (!usingPath)
-                ArriveToPlayer();
-
+            ArriveToPlayer();
             return;
         }
 
-        if (Physics.Raycast(
-            transform.position + Vector3.up * 0.5f,
-            transform.forward,
-            2f,
-            obstacleMask))
+        // Si hay obstáculo, seguir usando Theta*
+        if (!usingPath)
         {
             CalculateThetaPath();
         }
-        else
-        {
-            ArriveToPlayer();
-        }
+
+        FollowThetaPath();
     }
     private void FollowThetaPath()
     {
@@ -119,6 +126,8 @@ public class EnemyController3 : MonoBehaviour
         if (currentNodeIndex >= currentPath.Count)
         {
             usingPath = false;
+            currentPath.Clear();
+            currentNodeIndex = 0;
             return;
         }
 
