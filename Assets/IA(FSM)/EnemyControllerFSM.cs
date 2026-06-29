@@ -28,6 +28,10 @@ public class EnemyControllerFSM : MonoBehaviour
     private float repathTimer;
     [SerializeField] float repathInterval = 0.5f;
     private Vector3 lastKnownPlayerPosition;
+
+
+    private bool ignoreObstacles = false;
+
     private void Awake()
     {
         fsm = GetComponent<FSMClasses>();
@@ -52,7 +56,8 @@ public class EnemyControllerFSM : MonoBehaviour
                 CalculatePath();
         }
         bool canSeePlayer = los.IsRange(transform, player) && !los.IsObstacle(transform, player);
-        Debug.Log(canSeePlayer);
+        //Debug.Log(fsm._currentState);
+
         fsm.UpdateState(canSeePlayer);
 
         Move(dir);
@@ -73,12 +78,13 @@ public class EnemyControllerFSM : MonoBehaviour
             }
         }
 
+        Debug.Log(closest);
         return closest;
     }
     private void CalculatePath()
     {
         Node start = GetClosestNode(transform.position);
-        Node goal = GetClosestNode(lastKnownPlayerPosition);
+        Node goal = GetClosestNode(player.transform.position);
         Debug.Log("CALCULANDO CAMINO");
         Debug.Log("Nodo actual: " + currentNodeIndex + "/" + currentPath.Count);
         currentPath = AStar.Run(
@@ -106,12 +112,16 @@ public class EnemyControllerFSM : MonoBehaviour
         if (currentNodeIndex >= currentPath.Count)
         {
             usingPath = false;
+            ignoreObstacles = false;
+            Debug.Log("Chauuuuuuuuuuuuu");
             return;
         }
 
         Vector3 target = currentPath[currentNodeIndex].transform.position;
 
         dir = SteeringBehaviours.Seek(transform, target);
+
+        Debug.Log(Vector3.Distance(transform.position, target));
 
         if (Vector3.Distance(transform.position, target) < 1f)
         {
@@ -200,8 +210,10 @@ public class EnemyControllerFSM : MonoBehaviour
             return;
         }
 
-        if (los.ObstacleAhead(transform, 2f))
+        if (los.ObstacleAhead(transform, 2f) && ignoreObstacles == false)
         {
+            Debug.Log("Recalculo");
+            ignoreObstacles = true;
             CalculatePath();
         }
         else
