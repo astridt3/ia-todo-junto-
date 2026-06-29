@@ -33,7 +33,6 @@ public class FlockAgent : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (manager == null) return;
 
         Vector3 separation = CalculateSeparation();
@@ -42,10 +41,23 @@ public class FlockAgent : MonoBehaviour
         Vector3 targetForce = CalculateTargetForce();
         Vector3 boundsForce = CalculateBoundsForce();
 
+        bool hasNeighbors = HasNeighbors();
+
+        float sepW = manager.SeparationWeight;
+        float aliW = manager.AlignmentWeight;
+        float cohW = manager.CohesionWeight;
+
+        if (hasNeighbors)
+        {
+            sepW *= 0.8f;
+            aliW *= 2f;
+            cohW *= 1.5f; 
+        }
+
         Vector3 steering =
-            separation * manager.SeparationWeight +
-            alignment * manager.AlignmentWeight +
-            cohesion * manager.CohesionWeight +
+            separation * sepW +
+            alignment * aliW +
+            cohesion * cohW +
             targetForce * manager.TargetWeight +
             boundsForce * manager.BoundsWeight;
 
@@ -56,13 +68,9 @@ public class FlockAgent : MonoBehaviour
         float speed = newVelocity.magnitude;
 
         if (speed < manager.MinSpeed)
-        {
             newVelocity = newVelocity.normalized * manager.MinSpeed;
-        }
         else if (speed > manager.MaxSpeed)
-        {
             newVelocity = newVelocity.normalized * manager.MaxSpeed;
-        }
 
         rb.linearVelocity = newVelocity;
 
@@ -71,19 +79,27 @@ public class FlockAgent : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 8f * Time.fixedDeltaTime));
         }
-        RaycastHit hit;
 
-        if (Physics.Raycast(
-            transform.position,
-            rb.linearVelocity.normalized,
-            out hit,
-            1f,
-            Obstacle))
+        if (Physics.Raycast(transform.position, rb.linearVelocity.normalized, out RaycastHit hit, 1f, Obstacle))
         {
             rb.linearVelocity = Vector3.Reflect(rb.linearVelocity, hit.normal);
         }
     }
+    private bool HasNeighbors()
+{
+    for (int i = 0; i < manager.Agents.Count; i++)
+    {
+        FlockAgent other = manager.Agents[i];
+        if (other == this) continue;
 
+        float distance = Vector3.Distance(transform.position, other.transform.position);
+
+        if (distance < manager.NeighborRadius)
+            return true;
+    }
+
+    return false;
+}
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
