@@ -5,7 +5,7 @@ public class FlockManager : MonoBehaviour
 {
     [Header("Spawn")]
     [SerializeField] private FlockAgent agentPrefab;
-    [SerializeField] private int agentCount = 20;
+    [SerializeField] private int agentCount = 10;
     [SerializeField] private Vector3 spawnExtents = new Vector3(1f, 1f, 1f);
 
     [Header("Movement")]
