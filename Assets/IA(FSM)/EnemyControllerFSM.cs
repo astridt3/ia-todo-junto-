@@ -126,8 +126,8 @@ public class EnemyControllerFSM : MonoBehaviour
         if (Vector3.Distance(transform.position, target) < 1f)
         {
             Debug.Log("Llegó al nodo: " + currentPath[currentNodeIndex].name);
-
-            currentNodeIndex++;
+            CalculatePath();
+            //currentNodeIndex++;
 
             Debug.Log("Siguiente índice: " + currentNodeIndex);
         }
