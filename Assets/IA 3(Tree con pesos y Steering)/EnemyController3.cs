@@ -23,6 +23,9 @@ public class EnemyController3 : MonoBehaviour
 
     [SerializeField] private LayerMask obstacleMask;
 
+    [SerializeField] private float decisionInterval = 0.5f;
+    private float decisionTimer;
+
     private void Awake()
     {
         tree = GetComponent<EnemyDecisionTree>();
@@ -43,8 +46,13 @@ public class EnemyController3 : MonoBehaviour
 
     private void Update()
     {
+        decisionTimer += Time.deltaTime;
         context.player = player;
-        tree.Evaluate(this, context);
+        if (decisionTimer >= decisionInterval)
+        {
+            decisionTimer = 0;
+            tree.Evaluate(this, context);
+        }
         Move(dir);
     }
     private void CalculateThetaPath()
