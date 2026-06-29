@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class EnemyControllerFSM : MonoBehaviour
 
@@ -19,7 +20,14 @@ public class EnemyControllerFSM : MonoBehaviour
     private Coroutine freezeRoutine;
     [SerializeField] private float freezeCooldown = 5f;
     private bool canFreeze = true;
+    [SerializeField] private Node[] allNodes;
 
+    private List<Node> currentPath = new List<Node>();
+    private int currentNodeIndex = 0;
+    private bool usingPath = false;
+    private float repathTimer;
+    [SerializeField] float repathInterval = 0.5f;
+    private Vector3 lastKnownPlayerPosition;
     private void Awake()
     {
         fsm = GetComponent<FSMClasses>();
@@ -34,12 +42,87 @@ public class EnemyControllerFSM : MonoBehaviour
 
     public void Update()
     {
+        repathTimer -= Time.deltaTime;
+
+        if (repathTimer <= 0)
+        {
+            repathTimer = repathInterval;
+
+            if (usingPath)
+                CalculatePath();
+        }
         bool canSeePlayer = los.IsRange(transform, player) && !los.IsObstacle(transform, player);
         Debug.Log(canSeePlayer);
         fsm.UpdateState(canSeePlayer);
 
         Move(dir);
     }
+    private Node GetClosestNode(Vector3 pos)
+    {
+        Node closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (Node node in allNodes)
+        {
+            float d = Vector3.Distance(pos, node.transform.position);
+
+            if (d < minDist)
+            {
+                minDist = d;
+                closest = node;
+            }
+        }
+
+        return closest;
+    }
+    private void CalculatePath()
+    {
+        Node start = GetClosestNode(transform.position);
+        Node goal = GetClosestNode(lastKnownPlayerPosition);
+        Debug.Log("CALCULANDO CAMINO");
+        Debug.Log("Nodo actual: " + currentNodeIndex + "/" + currentPath.Count);
+        currentPath = AStar.Run(
+            start,
+            node => node == goal,
+            node => node.neightbourds,
+            (a, b) => Vector3.Distance(a.transform.position, b.transform.position),
+            node => Vector3.Distance(node.transform.position, goal.transform.position)
+        );
+
+        if (currentPath.Count == 0)
+        {
+            usingPath = false;
+            return;
+        }
+
+        currentNodeIndex = 1;
+        usingPath = true;
+    }
+    private void FollowPath()
+    {
+        if (!usingPath)
+            return;
+
+        if (currentNodeIndex >= currentPath.Count)
+        {
+            usingPath = false;
+            return;
+        }
+
+        Vector3 target = currentPath[currentNodeIndex].transform.position;
+
+        dir = SteeringBehaviours.Seek(transform, target);
+
+        if (Vector3.Distance(transform.position, target) < 1f)
+        {
+            Debug.Log("Llegó al nodo: " + currentPath[currentNodeIndex].name);
+
+            currentNodeIndex++;
+
+            Debug.Log("Siguiente índice: " + currentNodeIndex);
+        }
+    }
+
     public void Pursue()
     {
         Vector3 direction = player.transform.position - transform.position;
@@ -102,6 +185,29 @@ public class EnemyControllerFSM : MonoBehaviour
         dir = SteeringBehaviours.Seek(transform, player.transform.position);
 
         Debug.Log("vAYA123");
+    }
+    public void PursueAStar()
+    {
+        if (usingPath)
+        {
+            FollowPath();
+
+            if (!usingPath)
+            {
+                dir = SteeringBehaviours.Seek(transform, player.position);
+            }
+
+            return;
+        }
+
+        if (los.ObstacleAhead(transform, 2f))
+        {
+            CalculatePath();
+        }
+        else
+        {
+            dir = SteeringBehaviours.Seek(transform, player.position);
+        }
     }
 
     private void Move(Vector3 dir)

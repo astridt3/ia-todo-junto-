@@ -19,6 +19,27 @@ public class LineOfSight : MonoBehaviour
     {
         return Vector3.Distance(self.position, target.position) < distance;
     }
+    public bool ObstacleAhead(Transform self, float distance)
+    {
+        Vector3 center = self.position + Vector3.up * 1f;
+
+        bool obstacle = Physics.BoxCast(
+            center,
+            new Vector3(0.4f, 1f, 0.4f),
+            self.forward,
+            out RaycastHit hit,
+            self.rotation,
+            distance,
+            obs
+        );
+
+        if (obstacle)
+        {
+            Debug.Log("Obstáculo adelante: " + hit.collider.name);
+        }
+
+        return obstacle;
+    }
 
     public bool IsRangeAttack(Transform self, Transform target)
     {

@@ -97,7 +97,7 @@ public class PursueState : State
 
     public override void Update(bool canSeePlayer)
     {
-        fsm.enemy.Seek();
+        fsm.enemy.PursueAStar();
 
         float distance = Vector3.Distance(
             fsm.enemy.transform.position,

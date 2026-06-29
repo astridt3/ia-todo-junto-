@@ -221,7 +221,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        Debug.Log("Voy hacia el nodo: " + currentPath[currentNodeIndex].name);
+        //Debug.Log("Voy hacia el nodo: " + currentPath[currentNodeIndex].name);
 
         Vector3 targetPos = currentPath[currentNodeIndex].transform.position;
 
@@ -229,15 +229,15 @@ public class EnemyController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetPos) < 0.3f)
         {
-            Debug.Log("Llegué al nodo: " + currentPath[currentNodeIndex].name);
+            //Debug.Log("Llegué al nodo: " + currentPath[currentNodeIndex].name);
 
             currentNodeIndex++;
 
-            if (currentNodeIndex < currentPath.Count)
-                Debug.Log("Siguiente nodo: " + currentPath[currentNodeIndex].name);
+            if (currentNodeIndex < currentPath.Count) ;
+            //Debug.Log("Siguiente nodo: " + currentPath[currentNodeIndex].name);
             else
             {
-                Debug.Log("Fin del camino");
+                //Debug.Log("Fin del camino");
                 usingPath = false;
             }
         }
