@@ -28,6 +28,7 @@ public class EnemyControllerFSM1 : MonoBehaviour
     private float repathTimer;
     [SerializeField] float repathInterval = 0.5f;
     private Vector3 lastKnownPlayerPosition;
+    private bool isAttacking = false;
 
 
     private bool ignoreObstacles = false;
@@ -80,6 +81,17 @@ public class EnemyControllerFSM1 : MonoBehaviour
 
         Debug.Log(closest);
         return closest;
+    }
+    public void Attack()
+    {
+        Debug.Log("Empieza a atacar");
+        isAttacking = true;
+        if (isAttacking)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            dir = Vector3.zero;
+        }
+        Debug.Log("Deja de atacar");
     }
     private bool HasLineOfSight(Node from, Node to)
     {
@@ -203,7 +215,7 @@ public class EnemyControllerFSM1 : MonoBehaviour
 
         Debug.Log("vAYA123");
     }
-    public void PursueAStar()
+    public void PursueStar()//usa theta solo cambia el nombre
     {
         if (usingPath)
         {
