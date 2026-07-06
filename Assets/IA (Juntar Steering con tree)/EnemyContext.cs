@@ -6,4 +6,5 @@ public class EnemyContext
     public Transform player;
     public LineOfSight los;
     public EnemyController3 enemy;
+    public bool ignorePlayer;
 }

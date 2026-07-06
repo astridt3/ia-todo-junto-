@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform player;
     private LineOfSight los;
     private EnemyTree desicionTree;
+    private Treeeee desicionTreee;
     private EnemyContext context;
     private Vector3 lastSeenPosition;
     private bool hasLastSeenPosition = false;
@@ -32,13 +34,32 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float obstacleDetectionDistance = 2f;
 
     private bool chasingPlayer = false;
+
+    [SerializeField] private float freezeTime = 2f;
+    private float freezeTimer;
+    private bool isFreezing;
+    [SerializeField] private float freezeCooldown = 5f;
+    [SerializeField] private float totalSearchTime = 15f;
+    [SerializeField] private float ignorePlayerTime = 7f;
+    private float ignorePlayerTimer;
+    private float searchTimer;
+    private bool searching;
+    private bool ignoreObstacles = false;
+    private bool canFreeze = true;
+    private float repathTimer;
+    private bool Tree1 = false;
+    private bool Tree2 = true;
+
+
     private void Awake()
     {
         los = GetComponent<LineOfSight>();
         desicionTree = GetComponent<EnemyTree>();
+        desicionTreee = GetComponent<Treeeee>();
         wanderDirection = transform.forward;
         context = new EnemyContext { self = transform, player = player, los = los };
-
+        Tree1 = false;
+        Tree2 = true;
     }
 
     private void Start()
@@ -48,9 +69,20 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
+        if (player == null)
+            return;
+
         context.player = player;
 
-        desicionTree.Evaluate(this, context);
+        if (!Tree1 && desicionTree != null)
+        {
+            desicionTree.Evaluate(this, context);
+        }
+
+        if (Tree2 && desicionTreee != null)
+        {
+            desicionTreee.Evaluate(this, context);
+        }
 
         Move(dir);
     }
@@ -141,6 +173,67 @@ public class EnemyController : MonoBehaviour
 
         Debug.Log("vAYA");
     }
+    public void FreezePlayer(bool freeze)
+    {
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = freeze;
+        }
+    }
+    public void Search()
+    {
+        if (!searching)
+        {
+            searching = true;
+            searchTimer = totalSearchTime;
+        }
+
+        searchTimer -= Time.deltaTime;
+
+        Wander();
+
+        if (searchTimer <= 0f)
+        {
+            searching = false;
+        }
+    }
+    public void Freeze()
+    {
+        if (!isFreezing)
+        {
+            isFreezing = true;
+            freezeTimer = freezeTime;
+            ignorePlayerTimer = ignorePlayerTime;
+            FreezePlayer(true);  
+        }
+
+        freezeTimer -= Time.deltaTime;
+
+        if (freezeTimer <= 0f)
+        {
+            FreezePlayer(false);  
+            isFreezing = false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && canFreeze)
+        {
+            //fsm.ToFreeze();
+            StartCoroutine(FreezeCooldownRoutine());
+        }
+    }
+    private IEnumerator FreezeCooldownRoutine()
+    {
+        canFreeze = false;
+
+        yield return new WaitForSeconds(freezeCooldown);
+
+        canFreeze = true;
+    }
     public void Seek()
     {
         if (los.IsObstacle(transform, player))
@@ -163,16 +256,21 @@ public class EnemyController : MonoBehaviour
 
         foreach (Node node in allNodes)
         {
-            float dist = Vector3.Distance(pos, node.transform.position);
+            float d = Vector3.Distance(pos, node.transform.position);
 
-            if (dist < minDist)
+            if (d < minDist)
             {
-                minDist = dist;
+                minDist = d;
                 closest = node;
             }
         }
 
+        Debug.Log(closest);
         return closest;
+    }
+    private bool HasLineOfSight(Node from, Node to)
+    {
+        return !los.IsObstacle(from.transform, to.transform);
     }
 
     private void CalculatePath()
@@ -203,7 +301,57 @@ public class EnemyController : MonoBehaviour
             Debug.Log(n.name);
         }
     }
+    private void CalculatePathh()
+    {
+        Node start = GetClosestNode(transform.position);
+        Node goal = GetClosestNode(player.transform.position);
+        Debug.Log("CALCULANDO CAMINO");
+        Debug.Log("Nodo actual: " + currentNodeIndex + "/" + currentPath.Count);
 
+        currentPath = ThetaStar.Run(
+    start,
+    node => node == goal,
+    node => node.neightbourds,
+    (a, b) => Vector3.Distance(a.transform.position, b.transform.position),
+    node => Vector3.Distance(node.transform.position, goal.transform.position),
+    (a, b) => HasLineOfSight(a, b)
+);
+
+        if (currentPath.Count == 0)
+        {
+            usingPath = false;
+            return;
+        }
+
+        currentNodeIndex = 1;
+        usingPath = true;
+    }
+
+    public void PursueAStar()
+    {
+        if (usingPath)
+        {
+            FollowPath();
+
+            if (!usingPath)
+            {
+                dir = SteeringBehaviours.Seek(transform, player.position);
+            }
+
+            return;
+        }
+
+        if (los.ObstacleAhead(transform, 2f) && ignoreObstacles == false)
+        {
+            Debug.Log("Recalculo");
+            ignoreObstacles = true;
+            CalculatePath();
+        }
+        else
+        {
+            dir = SteeringBehaviours.Seek(transform, player.position);
+        }
+    }
     private void FollowPath()
     {
         if (!usingPath)
